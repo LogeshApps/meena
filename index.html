@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rotating Chakars</title>
+  <title>Meenakshi Jewellers</title>
   <style>
     body {
       margin: 0;
@@ -43,7 +43,7 @@
     /* Center image */
     .center-img {
       position: absolute;
-      top: 20%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 400px;
@@ -98,7 +98,7 @@
     /* Crown above all */
     .crown-img {
       position: absolute;
-      top: 27%;           /* above the text */
+      top: 10%;           /* above the text */
       left: 50%;
       transform: translateX(-50%);
       width: 110px;
@@ -111,16 +111,6 @@
     @keyframes spin {
       from { transform: rotate(0deg); }
       to   { transform: rotate(360deg); }
-    }
-
-    /* Mobile responsive */
-    @media (max-width: 768px) {
-      .corner-rotate { width: 250px; }
-      .mid { width: 180px; left: calc(50% - 200px); }
-      .center-img { width: 250px; }
-      .center-text { font-size: 36px; }
-      .crown-img { width: 70px; top: 20%; }
-      .explore-btn { font-size: 18px; padding: 10px 20px; top: 75%; }
     }
   </style>
 
@@ -150,23 +140,13 @@
   </div>
 
   <!-- Explore button -->
-  <button class="explore-btn" onclick="exploreAction()">Explore</button>
+  <button class="explore-btn">Explore</button>
 
-  <!-- Background audio -->
-  <audio id="bg-audio" loop>
+  <!-- Background music -->
+  <audio autoplay loop>
     <source src="background-music.mp3" type="audio/mpeg">
+    <source src="background-music.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
   </audio>
-
-  <script>
-    function exploreAction() {
-      // Play background music
-      const audio = document.getElementById('bg-audio');
-      audio.play().catch(err => console.log('Audio play blocked:', err));
-
-      // Show popup message
-      alert("Welcome to Meenakshi Jewellers!");
-    }
-  </script>
 </body>
 </html>
-
