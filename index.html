@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating Chakars</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: black;
+      overflow: hidden;
+    }
+
+    /* Spinning corner chakras */
+    .corner-rotate {
+      position: absolute;
+      width: 400px;
+      height: auto;
+      animation: spin 15s linear infinite;
+      transform-origin: center center;
+      z-index: 1; /* behind crown */
+    }
+
+    .top-left { top: -200px; left: -200px; }
+    .top-right { top: -200px; right: -200px; }
+    .bottom-left { bottom: -200px; left: -200px; }
+    .bottom-right { bottom: -200px; right: -200px; }
+
+    /* Mid chakras */
+    .mid {
+      position: absolute;
+      width: 300px;
+      height: auto;
+      top: 21%;
+      transform: translateY(-50%);
+      animation: spin 12s linear infinite;
+      z-index: 1; /* behind crown */
+    }
+    .mid-left { left: calc(50% - 350px); }
+    .mid-right { left: calc(50% + 50px); }
+
+    /* Center image */
+    .center-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      z-index: 2; /* behind crown */
+    }
+
+    /* Elegant Curly Golden Text */
+    .center-text {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 60px;
+      font-family: 'Great Vibes', cursive;
+      font-weight: 300;
+      color: #FFD700;
+      line-height: 1.2;
+      text-shadow: 
+        1px 1px 0 #070501,
+        2px 2px 4px rgba(0,0,0,0.6),
+        0 0 10px rgba(255,215,0,0.7),
+        0 0 20px rgba(255,215,0,0.5);
+      z-index: 3; /* behind crown */
+      letter-spacing: 1px;
+    }
+
+    /* Explore button */
+    .explore-btn {
+      position: absolute;
+      top: 82%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 30px;
+      font-size: 22px;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(145deg, #d4af37, #b8860b);
+      border: none;
+      border-radius: 12px;
+      box-shadow: 4px 4px 8px #000, -2px -2px 6px #555;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 4; /* behind crown */
+    }
+    .explore-btn:hover {
+      transform: translateX(-50%) scale(1.1);
+      box-shadow: 6px 6px 12px #000, -3px -3px 8px #555;
+    }
+
+    /* Crown above all */
+    .crown-img {
+      position: absolute;
+      top: 27%;           /* above the text */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: auto;
+      z-index: 9999;      /* on top of everything */
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+    }
+
+    /* Spinning animation */
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .corner-rotate { width: 250px; }
+      .mid { width: 180px; left: calc(50% - 200px); }
+      .center-img { width: 250px; }
+      .center-text { font-size: 36px; }
+      .crown-img { width: 70px; top: 20%; }
+      .explore-btn { font-size: 18px; padding: 10px 20px; top: 75%; }
+    }
+  </style>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Corner chakras -->
+  <img src="chakar.png" alt="Chakar" class="corner-rotate top-left">
+  <img src="chakar.png" alt="Chakar" class="corner-rotate top-right">
+  <img src="chakar.png" alt="Chakar" class="corner-rotate bottom-left">
+  <img src="chakar.png" alt="Chakar" class="corner-rotate bottom-right">
+
+  <!-- Mid chakras -->
+  <img src="f8.png" alt="Chakar" class="mid mid-left">
+  <img src="f8.png" alt="Chakar" class="mid mid-right">
+
+  <!-- Center image -->
+  <img src="f7.png" alt="Center Image" class="center-img">
+
+  <!-- Crown on top -->
+  <img src="crown.png" alt="Crown" class="crown-img">
+
+  <!-- Golden Curly Text -->
+  <div class="center-text">
+    Meenakshi <br> Jewellers
+  </div>
+
+  <!-- Explore button -->
+  <button class="explore-btn" onclick="exploreAction()">Explore</button>
+
+  <!-- Background audio -->
+  <audio id="bg-audio" loop>
+    <source src="background-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function exploreAction() {
+      // Play background music
+      const audio = document.getElementById('bg-audio');
+      audio.play().catch(err => console.log('Audio play blocked:', err));
+
+      // Show popup message
+      alert("Welcome to Meenakshi Jewellers!");
+    }
+  </script>
+</body>
+</html>
